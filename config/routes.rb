@@ -1,35 +1,25 @@
 ActionController::Routing::Routes.draw do |map|
-  # The priority is based upon order of creation: first created -> highest priority.
 
-  # Sample of regular route:
-  #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
-  # Keep in mind you can assign values other than :controller and :action
+  map.invite '/invite', :controller => 'users', :action => 'invite'
 
-  # Sample of named route:
-  #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
-  # This route can be invoked with purchase_url(:id => product.id)
+  map.popular '/popular', :controller => 'tracks', :action => 'popular'
+  map.popular_rss '/popular.rss', :controller => 'tracks', :action => 'popular', :format => 'rss'
+  
+  map.recent '/recent', :controller => 'tracks', :action => 'recent'
+  map.recent_rss '/recent.rss', :controller => 'tracks', :action => 'recent', :format => 'rss'
 
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   map.resources :products
+  map.upload  '/:user_id/upload', :controller => 'tracks', :action => 'new'
 
-  # Sample resource route with options:
-  #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
+  map.download  '/download/:id/:filename', :controller => 'downloads', :action => 'download', :filename => /.*/
 
-  # Sample resource route with sub-resources:
-  #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
 
-  # Sample resource route within a namespace:
-  #   map.namespace :admin do |admin|
-  #     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
-  #     admin.resources :products
-  #   end
+  map.from_plugin :community_engine
+  
+  
 
-  # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  # map.root :controller => "welcome"
-
-  # See how all your routes lay out with "rake routes"
-
+  
   # Install the default routes as the lowest priority.
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
+
 end

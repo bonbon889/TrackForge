@@ -1,0 +1,55 @@
+attribution_non_commercial_share_alike:
+  id: 1
+  name: 'Attribution Non-commercial Share Alike (by-nc-sa)'
+  description: "This license lets others remix, tweak, and build upon your work non-commercially, as long as they credit you and license their new creations under the identical terms. Others can download and redistribute your work just like the by-nc-nd license, but they can also translate, make remixes, and produce new stories based on your work. All new work based on yours will carry the same license, so any derivatives will also be non-commercial in nature."
+  detail_url: 'http://creativecommons.org/licenses/by-nc-sa/3.0/'
+  license_url: 'http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode'
+  full_description:
+
+attribution_non_commercial_no_derivatives:
+  id: 2
+  name: 'Attribution Non-commercial No Derivatives (by-nc-nd)'
+  description: "This license is the most restrictive of our six main licenses, allowing redistribution. This license is often called the “free advertising” license because it allows others to download your works and share them with others as long as they mention you and link back to you, but they can’t change them in any way or use them commercially."
+  detail_url: 'http://creativecommons.org/licenses/by-nc-nd/3.0/'
+  license_url: 'http://creativecommons.org/licenses/by-nc-nd/3.0/legalcode'
+  full_description:
+
+attribution_by:
+  id: 3
+  name: 'Attribution (by)'
+  description: "This license lets others distribute, remix, tweak, and build upon your work, even commercially, as long as they credit you for the original creation. This is the most accommodating of licenses offered, in terms of what others can do with your works licensed under Attribution."
+  detail_url: 'http://creativecommons.org/licenses/by/3.0/'
+  license_url: 'http://creativecommons.org/licenses/by/3.0/legalcode'
+  full_description:
+
+attribution_share_alike:
+  id: 4
+  name: 'Attribution Share Alike (by-sa)'
+  description: "This license lets others remix, tweak, and build upon your work even for commercial reasons, as long as they credit you and license their new creations under the identical terms. This license is often compared to open source software licenses. All new works based on yours will carry the same license, so any derivatives will also allow commercial use."
+  detail_url: 'http://creativecommons.org/licenses/by-sa/3.0/'
+  license_url: 'http://creativecommons.org/licenses/by-sa/3.0/legalcode'
+  full_description:
+    
+attribution_no_derivatives:
+  id: 5
+  name: 'Attribution No Derivatives (by-nd)'
+  description: "This license allows for redistribution, commercial and non-commercial, as long as it is passed along unchanged and in whole, with credit to you."
+  detail_url: 'http://creativecommons.org/licenses/by-nd/3.0/'
+  license_url: 'http://creativecommons.org/licenses/by-nd/3.0/legalcode'
+  full_description:
+    
+attribution_non_commercial:
+  id: 6
+  name: 'Attribution Non-commercial (by-nc)'
+  description: "This license lets others remix, tweak, and build upon your work non-commercially, and although their new works must also acknowledge you and be non-commercial, they don’t have to license their derivative works on the same terms."
+  detail_url: 'http://creativecommons.org/licenses/by-nd/3.0/'
+  license_url: 'http://creativecommons.org/licenses/by-nd/3.0/legalcode'
+  full_description:
+
+public_domain:
+  id: 7
+  name: 'Public Domain'
+  description: 'This Material is on/for public domain'
+  detail_url: 'http://en.wikipedia.org/wiki/Public_domain'
+  license_url: 'http://en.wikipedia.org/wiki/Public_domain'
+  full_description: 

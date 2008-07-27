@@ -1,0 +1,44 @@
+- @section = ""
+
+#yui-main
+  .yui-b
+    .box
+
+      %h1= link_to @track.name, user_track_path(@track.user, @track), :rel => 'bookmark'
+      %h3= "Uploaded By: #{link_to(@track.user.login, user_path(@track.user))}"
+      %p= "Submitted: #{@track.created_at.strftime('%x')}"
+      %p= "License: " + link_to("#{@track.license.name}", @track.license.license_url)
+      = #render :partial => 'posts/vcard'
+
+      .tentry-description
+        %p
+          = "Description: " 
+          = @track.description
+        %br.clear
+        - unless @track.tags.empty?
+          %ul.tags
+            - @track.tags.each do |t|
+              %li=link_to( t.name, tag_url(t.name), :rel => 'tag')
+      %br
+      .player
+        = image_tag('theme/player.png', :class => 'swf')
+      %br
+      %p.actions
+        = link_to "Download This Track", download_path(:id => @track.id, :filename => @track.filename)
+        = " / "
+
+      
+    %br.clear
+    #comments.box.hfeed.comments
+      %h3 Add Your Comment!
+      %p= render :partial => 'comments/comment_form', :locals => {:commentable => @track}
+      %a#newest_comment
+      = render :partial => 'comments/comment', :collection => @track.comments
+      %span#more_comments_links= more_comments_links(@track)
+
+    / ends box
+  / yui-b
+/ ends yui-main
+
+.yui-b
+  =render :partial => 'posts/author_profile', :locals => {:user => @user}

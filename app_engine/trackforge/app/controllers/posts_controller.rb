@@ -1,0 +1,5 @@
+class PostsController < BaseController
+  
+
+  
+end

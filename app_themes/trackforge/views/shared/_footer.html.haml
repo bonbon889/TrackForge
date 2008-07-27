@@ -1,0 +1,18 @@
+#CommunityFooter
+  %ul
+    %li
+      %a{:href=>"/", :title=>"#{AppConfig.community_name} Home"} Home
+    - if !logged_in?
+      %li
+        = link_to "Log in", login_path 
+    - else
+      %li
+        %a{:href=>"/logout", :title=>"Log out of your #{AppConfig.community_name} account"} Log out
+    %li
+      %a{:href=>"/about", :title=>"What is #{AppConfig.community_name}?"} About
+    %li
+      %a{:href=>"/faq", :title=>"Frequent Asked Questions"} FAQ
+    - if @rss_title && @rss_url
+      %li#rss= link_to 'RSS', @rss_url, {:title => @rss_title}
+
+  %p= AppConfig.community_tagline

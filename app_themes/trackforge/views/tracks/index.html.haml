@@ -1,0 +1,13 @@
+- @section = 'my_profile'
+
+.yui-b
+  = render :partial => 'users/dashboard_menu'
+  
+#yui-main
+  .yui-b
+    .box
+      %h1= "Your Uploaded Tracks"
+      = content_block :tags, 'gray' do 
+        - if @user.tracks.any?
+          = render :partial => 'tracks/track', :collection => @user.tracks
+        

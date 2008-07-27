@@ -1,0 +1,14 @@
+development:
+  bucket_name: trackforge_development
+  access_key_id: 01610MVYE455W522AD82
+  secret_access_key: AAWjcVMPDfTxhtuNFqnaxhscUkG9u1gJaDSlXOuj
+
+test:
+  bucket_name: trackforge
+  access_key_id: 
+  secret_access_key: 
+
+production:
+  bucket_name: trackforge
+  access_key_id: 01610MVYE455W522AD82
+  secret_access_key: AAWjcVMPDfTxhtuNFqnaxhscUkG9u1gJaDSlXOuj

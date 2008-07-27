@@ -1,0 +1,8 @@
+<object id="mp3player_<%= %>" type="application/x-shockwave-flash" data="/player.swf" width="280" height="40" style="vertical-align: bottom;">
+<!-- MP3 Flash player. Credits, license, contact & examples: http://pyg.keonox.com/flashmp3player/ -->
+<param name="type" value="application/x-shockwave-flash" />
+<param name="codebase" value="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" />
+<param name="movie" value="player.swf" />
+<param name="url" value="<%= track.public_filename   %>" />
+</object>
+<a href="javascript:void(0);" onclick="">Play sound 1</a>

@@ -1,0 +1,25 @@
+.tentry
+  - user = track.user
+  = link_to(image_tag(user.avatar_photo_url(:thumb), "height"=>"50", "alt"=>"#{user.login}", "width"=>"50" , :class => 'avatar'), user_path(user), :title => "#{user.login}'s profile")
+
+  = render :partial => 'tracks/jsplayer', :locals => {:track => track}
+  
+  %h2= link_to h(track.name), user_track_path(user,track)
+  %h3= "Uploaded by: " + link_to(user.login, user_path(user))
+
+
+  %p
+    / = link_to "#{image_tag('http://i.creativecommons.org/l/by-nc/3.0/80x15.png', :style => 'opacity:.4;vertical-align:middle')}", ""
+    = "License: " + link_to("#{track.license.name}", track.license.license_url)
+    = " / Submitted: #{track.created_at.strftime('%x')}"
+    = " / Genres: "
+    - unless track.tags.empty?
+      - track.tags.each do |t|
+        = link_to( t.name, tag_url(t.name), :rel => 'tag')
+    %br
+    #debug1= "&nbsp;"
+    %p.actions
+      = link_to "Download This Track", download_path(:id => track.id, :filename => track.filename)
+      = '/'
+      = link_to "Add to your Favorites", '#'
+

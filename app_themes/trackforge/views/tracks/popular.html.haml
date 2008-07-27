@@ -1,0 +1,27 @@
+- @section = 'popular'
+.yui-b.sidebar
+  .yui-u
+    = sidebar_block :pages, 'blue' do 
+      %h3= "Navigation"
+      - unless @pages.blank?
+        .pagination
+          = pagination_info_for @pages
+          = pagination_links_for @pages, {:link_to_current_page => true} if @pages.length > 1
+
+
+    = sidebar_block :tags, 'blue' do 
+      %h3.tags Popular Tags
+      %ul
+        - tag_cloud @tags, %w(nube1 nube2 nube3 nube4 nube5) do |name, css_class|
+          - css_class = css_class + (name.eql?(params[:id]) ? " selected": "")
+          %li= link_to h(name), tag_path(name), :class => css_class
+
+      %h6.all= link_to "All tags", tags_path
+
+#yui-main
+  .yui-b.box
+    %h1= "Popular"
+    = content_block :tags, 'gray' do 
+      - if @tracks.any?
+        = render :partial => 'tracks/track', :collection => @tracks
+        

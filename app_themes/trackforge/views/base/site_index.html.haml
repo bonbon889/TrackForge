@@ -1,0 +1,67 @@
+- @section = 'home'
+- unless logged_in?
+  = # render :partial => 'base/homepage_banner_message'
+
+#yui-main
+  .yui-b
+    .box
+      = content_block :categories, 'red' do |s|
+        .front_block{:style => 'width:400px;'}
+          %h2.genres
+          .darkred
+            %ul.genre_list
+              - Genre.primaries.each do |g| 
+                %li= link_to g.name, tag_path(:id => g.slug)
+        .front_block{:style => 'width:200px;margin-left:20px;'}
+          %h2.types
+          .darkred
+          
+      = content_block :latest_additions, 'gray' do 
+        %h2.latest_additions
+        = render :partial => "tracks/track", :collection => Track.latest
+
+.yui-b  
+  .box
+    = sidebar_block :contributors, 'blue' do 
+      %h2.contributors
+      - User.top_contributors.each do |user| 
+        = link_to image_tag( user.avatar_photo_url(:thumb), "height"=>"32", "alt"=>"#{user.login}", "width"=>"32" ), user_path(user), :title => "#{user.login}'s profile", :class => 'photo'
+
+          
+          
+    = sidebar_block :top_five, 'blue' do 
+      %h2.top_five
+      %ul.top_list
+        - Track.most_played.each do |track| 
+          %li
+            = link_to track.name, user_track_path(track.user,track)
+            = "By: #{link_to(track.user.login, user_path(track.user))}"
+
+    .padded
+      = image_tag('cc.logo.png', :plugin => 'trackforge')
+
+  /   %h3= "Explore #{AppConfig.community_name}"
+  /   %ul.list.checks
+  /     - Category.find(:all).each do |c|
+  /       %li= link_to c.name, category_path(c)
+  /     %li= link_to "What's Popular", popular_url, {:class => 'popular'}
+  /     %li= link_to "Find an Expert", skills_path, {:class => 'users'}
+  / 
+  / .box.alt
+  /   %h3
+  /     What's Hot?
+  /   %ul.list.page
+  /     -@popular_posts.each do |post|
+  /       =render :partial => 'posts/sidebar_post', :locals => {:post => post}
+  /   %h6.all
+  /     %a{:href=>"/popular"} SEE ALL
+  / 
+  / .box.alt
+  /   %h3= AppConfig.featured_writer_label.pluralize
+  /   -@featured_writers.each do |user|
+  /     =render :partial => "users/sidebar_user", :locals => {:user => user}
+  / 
+  / .box.alt
+  /   %h3 Active Users
+  /   -@active_users.each do |user|    
+  /     =render :partial => "users/sidebar_user", :locals => {:user => user}      

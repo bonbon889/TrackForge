@@ -1,0 +1,35 @@
+.box
+  %h3 Dashboard
+  .yui-g
+    .yui-u.first
+      View my:
+      %ul
+        %li=link_to 'Dashboard', user_path(@user)  
+        %li=link_to 'Profile', user_path(@user)  
+        %li=link_to 'Uploaded Tracks', user_tracks_path(@user)
+        %li=link_to 'Blog', user_posts_path(@user)
+        %li=link_to 'Photos', user_photos_path(@user)
+        %li=link_to 'Clippings', user_clippings_path(@user)
+        %li=link_to 'Friends', accepted_user_friendships_path(@user)
+    .yui-u
+      Manage my:
+      %ul
+        %li=link_to 'Profile', edit_user_path(@user)
+        %li=link_to 'Account settings', edit_account_user_path(@user)
+        %li=link_to 'Blog posts', manage_user_posts_path(@user)          
+
+.box.alt
+  %h3 Stats
+  %ul
+    %li="You last logged in on #{@user.last_login_at && @user.last_login_at.strftime("%m/%d/%y")}"
+    %li= @user.created_at.strftime("Member since: %m/%d/%y")
+    -unless @user.posts.empty?
+      %li="You have written #{@user.posts.count} blog posts."
+    -unless @user.photos.empty?
+      %li="You have uploaded #{@user.photos.count} photos."
+    -unless @user.clippings.empty?
+      %li="You have created #{@user.clippings.count} clippings."
+    -unless @user.comments.empty?
+      %li="You have left #{@user.posts.count} comments."
+    -unless @user.accepted_friendships.empty?
+      %li="You have #{pluralize @user.accepted_friendships.count, 'friend'}." 

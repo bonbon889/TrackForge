@@ -1,0 +1,52 @@
+.yui-b
+  .box#category_tips
+    
+#yui-main
+  .yui-b
+    .box
+      %h1= "Upload a new track"
+
+      = error_messages_for :track
+      - form_for(:track, :url => user_tracks_path(@user), :html => {:class => "MainForm", :multipart => true}) do |f| 
+
+        %label
+          Select File to Upload
+          %em
+            = (AppConfig.audio['attachment_fu_options']['max_size'])
+            megabyte upload limit
+        = f.file_field :uploaded_data
+
+        %label
+          Title 
+          %em (required)
+        = f.text_field :name
+
+        %label
+          Track Description 
+          %em (required)
+        = f.text_area :description, :style => "width:100%;height:50px"
+
+        %label
+          License 
+          %em= "(required. #{link_to('Know more about licenses here', 'http://creativecommons.org/about/license/')})"
+        = f.select :license_id, License.to_select
+
+
+        %label
+          Attribution
+          %em (Optional. List or Link Your Sources, Appreciations to Artists are much appreciated. Separated by commas)
+        = f.text_area :attribution, :style => "width:100%;height:30px"
+
+
+        %label
+          Tags 
+          %em (optional keywords describing this track, separated by commas)
+        = text_field_tag 'tag_list', @track.tags.collect{|t| t.name}.join(", "), {:autocomplete => "off", :size => 35}
+        .auto_complete#tag_list_auto_complete
+          = auto_complete_field 'tag_list', {:url => { :controller => "tags", :action => 'auto_complete_for_tag_name'}, :tokens => [',', ' ']  }
+        
+        %p
+          = submit_tag "Save"
+        %p
+          or 
+          = link_to 'cancel and go back to my tracks', user_tracks_path(@user)

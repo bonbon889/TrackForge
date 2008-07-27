@@ -1,0 +1,13 @@
+.player
+
+  .player_object
+    .player_slider{:id => "player_slider_#{track.id}"}
+      %a.player_handler{:id => "player_handler_#{track.id}", :href => '#', :onclick => 'return false;'}
+
+    = link_to_function '', "startPlay('sound_#{track.id}')", :id => "player_object_#{track.id}", :class => 'player_button'
+    = link_to_function '', "sound_#{track.id}.stop();this.hide();$('player_object_#{track.id}').show();", :id => "player_object_stop_#{track.id}", :style => 'display:none', :class => 'player_stop'
+
+
+- javascript_tag do 
+  = "var sound_#{track.id} = new Sound();"
+  = "var slider = createSlider(#{track.id});"
