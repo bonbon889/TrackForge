@@ -16,8 +16,6 @@ namespace :db do
 end
 
 namespace :trackforge do   
-  require 'faker'
-  require 'random_data'
   
   desc 'Move the community engine assets to application public directory'
   task :mirror_public_assets => :environment do
@@ -52,6 +50,9 @@ namespace :trackforge do
 
   desc 'load a bunch of test posts RAILS_ENV= NUM_USERS='
   task :load_test_posts=>[:environment]  do
+    require 'faker'
+    require 'random_data'
+
     ActiveRecord::Base.establish_connection(RAILS_ENV.to_sym)
     users = User.find(:all, :limit => 10)
     categories = Category.find(:all)
@@ -77,6 +78,8 @@ namespace :trackforge do
 
   desc 'load a bunch of test posts RAILS_ENV= NUM_USERS='
   task :load_test_post_comments=>[:environment]  do
+    require 'faker'
+    require 'random_data'
 
     ActiveRecord::Base.establish_connection(RAILS_ENV.to_sym)
     users = User.find(:all)
