@@ -71,12 +71,12 @@ ActiveRecord::Schema.define(:version => 20080721151031) do
   end
 
   create_table "comments", :force => true do |t|
-    t.string   "title",            :limit => 50,  :default => ""
-    t.text     "comment",          :limit => 255, :default => ""
-    t.datetime "created_at",                                      :null => false
-    t.integer  "commentable_id",                  :default => 0,  :null => false
-    t.string   "commentable_type", :limit => 15,  :default => "", :null => false
-    t.integer  "user_id",                         :default => 0,  :null => false
+    t.string   "title"            
+    t.text     "comment"          
+    t.datetime "created_at"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "user_id"  
     t.integer  "recipient_id"
   end
 

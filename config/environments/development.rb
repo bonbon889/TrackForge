@@ -32,4 +32,4 @@ end
 
 ActionMailer::Base.sendmail_settings = :sendmail
 
-APP_URL = "http://beta.trackforge.com"
+APP_URL = "http://heroku.trackforge.com"

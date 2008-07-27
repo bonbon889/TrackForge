@@ -41,4 +41,4 @@ ENV['GEM_PATH'] = '/home/trackforge/gems:/usr/lib/ruby/gems/1.8'
 
 ActionMailer::Base.sendmail_settings = :sendmail
 
-APP_URL = "http://beta.trackforge.com"
+APP_URL = "http://trackforge.heroku.com"
