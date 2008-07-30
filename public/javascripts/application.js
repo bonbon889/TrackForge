@@ -26,7 +26,7 @@ function startSlider(soundObject) {
   if(slider) {  
     slider.range = $R(0,100);
     durationObserver = new PeriodicalExecuter(function() {
-      $('debug1').innerHTML = "Duration: " + soundObject.getDuration() + " / Position : " + soundObject.getPosition() + " / Value : " + slider.value;
+      // $('debug1').innerHTML = "Duration: " + soundObject.getDuration() + " / Position : " + soundObject.getPosition() + " / Value : " + slider.value;
       // slider.setValue(soundObject.getPosition(), 0);
       var newvalue = (soundObject.getPosition() / soundObject.getDuration()) * 100;
       
@@ -86,7 +86,9 @@ function createSlider(id) {
  var player_handler_id = 'player_handler_' + id;
  var player_slider_id = 'player_slider_' + id;
   
- var slider = new Control.Slider(player_handler_id, player_slider_id, { sliderValue:0, onSlide:function(v){$('debug1').innerHTML='slide: '+ v }, 
+ var slider = new Control.Slider(player_handler_id, player_slider_id, { sliderValue:0, onSlide:function(v){
+   // $('debug1').innerHTML='slide: '+ v;
+   }, 
  onChange:function(v){
    
 
