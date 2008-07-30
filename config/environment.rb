@@ -8,11 +8,6 @@
 RAILS_GEM_VERSION = '2.1' unless defined? RAILS_GEM_VERSION
 
 
-# a production override
-ENV['GEM_PATH'] = '/home/trackforge/gems:/usr/lib/ruby/gems/1.8' if ENV['RAILS_ENV'] == 'production'
-
-
-
 require File.join(File.dirname(__FILE__), 'boot')
 require File.join(File.dirname(__FILE__), '../vendor/plugins/engines/boot')
 
