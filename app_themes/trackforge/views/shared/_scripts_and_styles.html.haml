@@ -17,6 +17,7 @@
 
 = javascript_include_tag 'sound'
 = javascript_include_tag 'slider'
+= javascript_include_tag "application"  
   
 - if current_page?(:controller => 'photos', :action => 'new')
   = javascript_include_tag 'swfupload', :plugin => "community_engine"
@@ -25,8 +26,6 @@
 = stylesheet_link_tag 'theme/screen.css', :media => 'screen'
 = stylesheet_link_tag 'theme/fonts.css', :media => 'screen'
 = stylesheet_link_tag 'theme/site.css', :media => 'screen'
-
-
 
 - if current_page?({:controller => 'posts', :action => 'show' })
   = javascript_include_tag 'lightbox', :plugin => "community_engine"

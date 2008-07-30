@@ -249,6 +249,11 @@ h2.top_five {
   background: url(/images/theme/buttons.png) no-repeat 0 0;
 }
 
+
+.tentry .description {
+/*  margin: 5px 0;*/
+}
+
 .tentry .player_stop {
   position: absolute;
   margin-top: 2px;

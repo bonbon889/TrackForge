@@ -2,4 +2,8 @@ tmp
 log
 db/*.sqlite3
 db/data.yml
+db/data.yml.backup
 tmp/**
+*.DS_Store
+public/player/**
+public/tracks/**

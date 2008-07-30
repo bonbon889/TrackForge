@@ -51,4 +51,16 @@ class BaseController < ApplicationController
     # @popular_polls = Poll.find_popular(:limit => 8)
   end
 
+  # fix for postgres db
+  def popular_tags(limit = nil, order = ' tags.name ASC', type = nil)
+    sql = "SELECT tags.id, tags.name, count(*) AS count 
+      FROM taggings, tags 
+      WHERE tags.id = taggings.tag_id "
+    sql += " AND taggings.taggable_type = '#{type}'" unless type.nil?      
+    sql += " GROUP BY tags.id, tags.name"
+    sql += " ORDER BY #{order}"
+    sql += " LIMIT #{limit}" if limit
+    Tag.find_by_sql(sql).sort{ |a,b| a.name.downcase <=> b.name.downcase}
+  end
+  
 end

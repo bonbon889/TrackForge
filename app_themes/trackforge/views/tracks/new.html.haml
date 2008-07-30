@@ -46,7 +46,7 @@
           = auto_complete_field 'tag_list', {:url => { :controller => "tags", :action => 'auto_complete_for_tag_name'}, :tokens => [',', ' ']  }
         
         %p
-          = submit_tag "Save"
+          = submit_tag "Upload Track"
         %p
           or 
           = link_to 'cancel and go back to my tracks', user_tracks_path(@user)

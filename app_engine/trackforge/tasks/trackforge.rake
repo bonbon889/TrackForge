@@ -109,8 +109,9 @@ namespace :trackforge do
   desc 'load genres'
   task :load_genres => :environment do 
     require 'csv'
+    
     # truncate the current genres table
-    ActiveRecord::Base.connection.execute('truncate genres')
+    ActiveRecord::Base.connection.execute('truncate genres') rescue nil
     
     csv_path = "#{File.dirname(__FILE__)}/genres.csv"
     puts "Loading #{csv_path}"
