@@ -1,6 +1,7 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
+var tracks = new Array();
 var currentlyPlaying = null;
 
 function createPlayer(id, url)  {
@@ -17,14 +18,10 @@ function getSoundObject(id) {
   }
 }
 
-function getSlider(id) {
-  eval("var slider = slider_" + id);
-  return slider;
-}
-
-function startSlider(id) {
-  soundObject = getSoundObject(id);
-  slider = getSlider(id);
+function startSlider(soundObject) {
+  slider = soundObject.slider;
+  
+  var durationObserver = null;
   
   if(slider) {  
     slider.range = $R(0,100);
@@ -35,38 +32,54 @@ function startSlider(id) {
       
       slider.setValue(newvalue, 0);
     },1);
-  
+    slider.trackObserver = durationObserver;  
+    durationObserver.execute();
   }
-  
-  durationObserver.execute();
-  
+    
   return durationObserver;
 }
 
 function stopPlay(id) {
   
   soundObject = getSoundObject(id);
+  
   if(soundObject) {
     soundObject.stop();
     eval("$('player_object_" + id + "').show();");
     eval("$('player_object_stop_" + id + "').hide();");
+    
+    if(soundObject.slider && soundObject.slider.trackObserver) {
+      soundObject.slider.setValue(0,0);
+      soundObject.slider.trackObserver.stop();
+    }
+
   }
 
-  slider = getSlider(id);
-  slider.value = 0;
-
   
-  currentlyPlaying = soundObject;
+
 }
 
 function startPlay(id) {
   soundObject = getSoundObject(id);
   if(soundObject) {
-    startSlider(id);
+    
+    if(currentlyPlaying) {
+      currentlyPlaying.stop();
+      stopPlay(currentlyPlaying.sound_id);
+      currentlyPlaying = null;
+    }
+
     soundObject.loadSound(soundObject.filename, true);
+    soundObject.slider = createSlider(id);
+    startSlider(soundObject);
+    
     eval("$('player_object_" + id + "').hide();");
     eval("$('player_object_stop_" + id + "').show();");
+    currentlyPlaying = soundObject;
+    
+
   }
+  
 }
 
 function createSlider(id) {

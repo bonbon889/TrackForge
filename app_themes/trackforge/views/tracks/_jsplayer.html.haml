@@ -8,6 +8,4 @@
 
 
 - javascript_tag do 
-  = "var sound_#{track.id} = new Sound();"
-  = "sound_#{track.id}.filename = '#{track.public_filename}';"
-  = "var slider_#{track.id} = createSlider(#{track.id});"
+  = "var sound_#{track.id} = new Sound();sound_#{track.id}.sound_id = #{track.id};sound_#{track.id}.filename = '#{track.public_filename}';"

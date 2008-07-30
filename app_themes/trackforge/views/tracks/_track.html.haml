@@ -19,7 +19,7 @@
     %br
     #debug1= "&nbsp;"
     %p.actions
-      = link_to "Download This Track", download_path(:id => track.id, :filename => track.filename)
+      = link_to "Download This Track", play_path(:id => track.id, :filename => track.filename)
       = '/'
       = link_to "Add to your Favorites", '#'
 

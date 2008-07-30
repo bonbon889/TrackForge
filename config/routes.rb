@@ -10,6 +10,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.upload  '/:user_id/upload', :controller => 'tracks', :action => 'new'
 
+  map.play      '/play/:id/:filename', :controller => 'downloads', :action => 'play', :filename => /.*/
   map.download  '/download/:id/:filename', :controller => 'downloads', :action => 'download', :filename => /.*/
 
 
