@@ -48,7 +48,7 @@ module ActiveRecord
           end
           query << " AND taggings.taggable_type = '#{acts_as_taggable_options[:taggable_type]}'"
           query << options[:sql] unless options[:sql].nil?
-          query << " GROUP BY tag_id"
+          query << " GROUP BY tags.id, tags.name"
           query << " ORDER_BY #{options[:order]}" if options[:order] != nil
           query << " LIMIT   #{options[:limit]}" if options[:limit] != nil
           tags = Tag.find_by_sql(query)          

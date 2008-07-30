@@ -274,7 +274,7 @@ h2.top_five {
 
 .tentry .player_handler {
   position: absolute;
-  left: 40px;
+/*  left: 40px;*/
   top: -5px;
   height: 15px;
   width: 4px;
