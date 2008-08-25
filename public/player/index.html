@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>
+Javascript Sound Kit
+</title>
+<body>
+<h1>Javascript Sound Kit</h1>
+<p>The Javascript Sound Kit is a wrapper around 
+the ActionScript Sound Object, it makes it possible to use 
+the Sound Object in Javascript the same way you do it in ActionScript.</p>
+<p>The API works almost the same way as the ActionScript Sound Object. Refer to Macromedia's documentation for 
+more information 
+<a href="http://livedocs.macromedia.com/flash/8/main/wwhelp/wwhimpl/common/html/wwhelp.htm?context=LiveDocs_Parts&file=00002668.html#wp435857">here</a>.</p>
+<h3>Code Example:</h3>
+<code>
+var mysound = new Sound();<br />
+mysound.loadSound("http://www.archive.org/download/Behind/SyncFilmicoBehind.mp3", true);<br />
+mysound.setVolume(30);<br /
+</code>
+
+<h3>Some other examples:</h3>
+<a href="player.html">Javascript MP3 Player Demo</a><br />
+<a href="test.html">API Test Page</a></br />
+
+<h3>How it works</h3>
+<p>The Javascript Sound Kit works by calling a Sound Object in a flash movie with a sound class bridge implemented.
+The magic happens by using the 
+<a href="http://livedocs.macromedia.com/flash/8/main/wwhelp/wwhimpl/common/html/wwhelp.htm?context=LiveDocs_Parts&file=00002200.html">ExternalInterface</a> 
+available on tha flash plugin version 8. </p>
+
+<h3>Troubleshooting</h3>
+<h4>The Javascript Sound Kit does not work on my site, what is happening?</h4>
+<ol>
+<li>The Javascript Sound Kit only works on Http Servers, it does not work locally do to brower's restrictions</li>
+<li>It requires flash plugin version 8</li>
+<li>Check the <a href="http://livedocs.macromedia.com/flash/8/main/wwhelp/wwhimpl/common/html/wwhelp.htm?context=LiveDocs_Parts&file=00002200.html">ExternalInterface's documentation</a> 
+to see if the combination of your browser and operating system is supported</li>
+</ol>
+
+<hr>
+<a href="http://sourceforge.net"><img src="http://sourceforge.net/sflogo.php?group_id=144409&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+<hr>
+Copyright (c) 2006, Gustavo Ribeiro Amigo
+</body>
+</html>
+

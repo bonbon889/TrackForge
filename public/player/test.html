@@ -1,0 +1,85 @@
+<html>
+<head>
+<script type="text/javascript" src="javascripts/prototype.js"></script>
+<script type="text/javascript" src="javascripts/DP_Debug.js"></script>
+<script type="text/javascript" src="javascripts/Sound.js"></script>
+<title>API Test Page</title>
+</head>
+<body>
+<h1>API Test Page</h1>
+<!--
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="450" height="325" id="sample" align="middle">
+<param name="movie" value="/SoundBridge.swf" />
+<param name="quality" value="high" />
+<param name="bgcolor" value="#ffffff" />
+<param name="FlashVars" value="id=123">
+<param nam="allowScriptAccess" value="always">
+<embed src="/SoundBridge.swf" FlashVars="id=123" allowScriptAccess="always" quality="high" bgcolor="#ffffff" width="450" height="325" name="sample" align="middle" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+</object> -->
+<table>
+<tr>
+    <th>Sound 1</th>
+    <th>Sound 2</th>
+</tr>
+<tr>
+    <td>    
+<a href="#" onclick="sound.loadSound('http://madbeats.com/media/songs/Big_Cheez--Cool_College_Kid.mp3', true)">loadSound</a> <br />
+<a href="#" onclick="sound.start()">start</a> <br />
+<a href="#" onclick="sound.stop()">stop</a> <br />
+<a href="#" onclick="Object.dpDump(sound.getId3());">getId3</a> <br />
+<a href="#" onclick="Object.dpDump(sound.getPan());">getPan</a> <br />
+<a href="#" onclick="Object.dpDump(sound.getTransform());">getTransform</a> <br />
+<a href="#" onclick="Object.dpDump(sound.getVolume());">getVolume</a> <br />
+<a href="#" onclick="Object.dpDump(sound.getDuration());">getDuration</a> <br />
+<a href="#" onclick="Object.dpDump(sound.getPosition());">getPosition</a> <br />
+<a href="#" onclick="Object.dpDump(sound.getBytesLoaded());">getBytesLoaded</a> <br />
+<a href="#" onclick="Object.dpDump(sound.getBytesTotal());">getBytesTotal</a> <br />
+    </td>
+    <td>
+<a href="#" onclick="sound2.loadSound($F('sound2_url'), $F('sound2_streaming'))">loadSound</a> (
+<input type="text" id="sound2_url" value="http://www.archive.org/download/Behind/SyncFilmicoBehind.mp3"/>,
+<input type="text" id="sound2_streaming" value="true"/>
+) <br />    
+<a href="#" onclick="sound2.start($F('sound2_offset'), $F('sound2_loop'))">start</a> (
+<input type="text" id="sound2_offset" value="0"/>,
+<input type="text" id="sound2_loop" value="1"/>) <br />
+<a href="#" onclick="sound2.stop()">stop</a> <br />
+<a href="#" onclick="Object.dpDump(sound2.getId3());">getId3</a> <br />
+<a href="#" onclick="Object.dpDump(sound2.getPan());">getPan</a> <br />
+<a href="#" onclick="Object.dpDump(sound2.getTransform());">getTransform</a> <br />
+<a href="#" onclick="Object.dpDump(sound2.getVolume());">getVolume</a> <br />
+<a href="#" onclick="Object.dpDump(sound2.getDuration());">getDuration</a> <br />
+<a href="#" onclick="Object.dpDump(sound2.getPosition());">getPosition</a> <br />
+<a href="#" onclick="Object.dpDump(sound2.getBytesLoaded());">getBytesLoaded</a> <br />
+<a href="#" onclick="Object.dpDump(sound2.getBytesTotal());">getBytesTotal</a> <br />
+<a href="#" onclick="sound2.setPan($F('sound2_position'));">setPan</a> ( 
+<input type="text" id="sound2_position" value="0"/>) <br />
+<a href="#" onclick="sound2.setVolume($F('sound2_volume'));">setVolume</a> (
+<input type="text" id="sound2_volume" value="100"/>) <br />
+<a href="#" onclick="sound2.setDuration($F('sound2_duration'));">setDuration</a> (
+<input type="text" id="sound2_duration" value="1000"/>) <br />
+<a href="#" onclick="sound2.setPosition($F('sound2_pos'));">setPosition</a> (
+<input type="text" id="sound2_pos" value="500"/>) <br />
+    </td>
+</tr>
+</table>
+
+
+<br />
+<form>
+<b>Tracer</b><br />
+<textarea id="sound_tracer" type="textarea" name="sound_tracer" rows="50" cols="80" /></textarea>
+</form>
+<script type="text/javascript">
+    var sound = new Sound();  
+    var sound2 = new Sound(); 
+    sound.loadSound('http://madbeats.com/media/songs/Big_Cheez--Cool_College_Kid.mp3', true)     
+</script>
+
+<hr>
+<a href="http://sourceforge.net"><img src="http://sourceforge.net/sflogo.php?group_id=144409&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+<hr>
+Copyright (c) 2006, Gustavo Ribeiro Amigo
+
+</body>
+</html>

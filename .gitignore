@@ -5,7 +5,6 @@ db/data.yml
 db/data.yml.backup
 tmp/**
 *.DS_Store
-public/player/**
 public/tracks/**
 public/photos/**
 public/clippings**
