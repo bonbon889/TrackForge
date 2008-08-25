@@ -81,9 +81,11 @@
   
 
     - if @tracks.any?
-      %h1 Artist Tracks
-      = content_block :tags, 'gray' do 
-        = render :partial => 'tracks/track', :collection => @tracks
+      .box
+        %h3 Artist Tracks
+        %h6.all= link_to "View all tracks", user_tracks_path(@user)
+        = content_block :tags, 'gray' do 
+          = render :partial => 'tracks/track', :collection => @tracks
 
     .box
       %h3 Photos

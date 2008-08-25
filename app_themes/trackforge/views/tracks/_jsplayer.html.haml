@@ -1,11 +1,9 @@
 .player
-
   .player_object
     .player_slider{:id => "player_slider_#{track.id}"}
       %a.player_handler{:id => "player_handler_#{track.id}", :href => 'javascript:void(0);', :onclick => 'return false;'}
-    %a.player_button{:id => "player_object_#{track.id}", :href => 'javascript:void(0);', :onclick => "startPlay('#{track.id}')"}
-    %a.player_stop{:id => "player_object_stop_#{track.id}", :href => 'javascript:void(0);', :onclick => "stopPlay('#{track.id}');", :style => "display:none;"}
+    %a.player_button{:id => "player_object_#{track.id}", :href => 'javascript:void(0);', :onclick => "startPlay('#{track.id}'); "}
+    %a.player_stop{:id => "player_object_stop_#{track.id}", :href => 'javascript:void(0);', :onclick => "stopPlay();", :style => "display:none;"}
 
-
-- javascript_tag do 
-  = "var sound_#{track.id} = new Sound();sound_#{track.id}.sound_id = #{track.id};sound_#{track.id}.filename = '#{track.public_filename}';"
+:javascript
+  createPlayer(#{track.id},'#{track.public_filename}');

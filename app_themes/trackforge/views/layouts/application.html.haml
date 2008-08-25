@@ -15,9 +15,9 @@
     
   %body
     #top_header
-      = link_to content_tag(:div,'',:class => 'share_this'), invite_path
-      
-      
+      %script{:type => "text/javascript"}= "addthis_pub = 'j4s0n';"
+      = link_to content_tag(:div,'',:class => 'share_this'), "http://www.addthis.com/bookmark.php", :onmouseover => "return addthis_open(this, '', '[URL]', '[TITLE]')", :onmouseout => "addthis_close()", :onclick => "addthis_sendto()"
+      %script{:type => "text/javascript", :src => "http://s7.addthis.com/js/152/addthis_widget.js"}
       
     #doc2{:class => "yui-t#{@sidebar_left ? 3 : 6}"}
       = render :partial => "shared/header"

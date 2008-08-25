@@ -7,7 +7,7 @@ class Photo < ActiveRecord::Base
 
   acts_as_activity :user, :if => Proc.new{|record| record.parent.nil?}
 
-  validates_presence_of :size
+  # validates_presence_of :size
   validates_presence_of :content_type
   validates_presence_of :filename
   validates_presence_of :user, :if => Proc.new{|record| record.parent.nil? }

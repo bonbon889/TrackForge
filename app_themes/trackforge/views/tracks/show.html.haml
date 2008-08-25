@@ -20,8 +20,7 @@
             - @track.tags.each do |t|
               %li=link_to( t.name, tag_url(t.name), :rel => 'tag')
       %br
-      .player
-        = image_tag('theme/player.png', :class => 'swf')
+      = render :partial => 'tracks/jsplayer', :locals => {:track => @track}
       %br
       %p.actions
         = link_to "Download This Track", download_path(:id => @track.id, :filename => @track.filename)

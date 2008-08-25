@@ -22,6 +22,8 @@
     %ul
       %li="You last logged in on #{@user.last_login_at && @user.last_login_at.strftime("%m/%d/%y")}"
       %li= @user.created_at.strftime("Member since: %m/%d/%y")
+      -unless @user.tracks.empty?
+        %li="You have uploaded #{@user.tracks.count} tracks."
       -unless @user.posts.empty?
         %li="You have written #{@user.posts.count} blog posts."
       -unless @user.photos.empty?

@@ -1,37 +1,22 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
-
-var tracks = new Array();
 var currentlyPlaying = null;
-
-function createPlayer(id, url)  {
-  alert(id); 
-}
-
-
-function getSoundObject(id) {
-  eval("var soundObject = sound_" + id); // create object
-  if(soundObject) {
-    return soundObject;
-  } else {
-    return false;
-  }
-}
+var sounds = new Array();
 
 function startSlider(soundObject) {
   slider = soundObject.slider;
-  
   var durationObserver = null;
-  
+
   if(slider) {  
     slider.range = $R(0,100);
+    soundObject.slider.setValue(0,0);
+
     durationObserver = new PeriodicalExecuter(function() {
       // $('debug1').innerHTML = "Duration: " + soundObject.getDuration() + " / Position : " + soundObject.getPosition() + " / Value : " + slider.value;
       // slider.setValue(soundObject.getPosition(), 0);
       var newvalue = (soundObject.getPosition() / soundObject.getDuration()) * 100;
-      
       slider.setValue(newvalue, 0);
-    },1);
+      
+    },.50);
+
     slider.trackObserver = durationObserver;  
     durationObserver.execute();
   }
@@ -39,45 +24,65 @@ function startSlider(soundObject) {
   return durationObserver;
 }
 
-function stopPlay(id) {
-  
-  soundObject = getSoundObject(id);
-  
-  if(soundObject) {
-    soundObject.stop();
-    eval("$('player_object_" + id + "').show();");
-    eval("$('player_object_stop_" + id + "').hide();");
-    
-    if(soundObject.slider && soundObject.slider.trackObserver) {
-      soundObject.slider.setValue(0,0);
-      soundObject.slider.trackObserver.stop();
-    }
+function stopPlay() {
 
+  if(currentlyPlaying) {
+    currentlyPlaying.stop();
+    eval("$('player_object_" + currentlyPlaying.sound_id + "').show();");
+    eval("$('player_object_stop_" + currentlyPlaying.sound_id + "').hide();");
+    
+    if(currentlyPlaying.slider && currentlyPlaying.slider.trackObserver) {
+      currentlyPlaying.slider.setValue(0,0);
+      currentlyPlaying.slider.trackObserver.stop();
+    }
   }
 
-  
+  // soundObject = null;
+  currentlyPlaying = null;
+}
 
+function createPlayer(id, filename) {
+  var soundObject = new Sound();
+  soundObject.sound_id = id;
+  soundObject.filename = filename;
+  sounds[sounds.length] = soundObject;
+  return soundObject;
 }
 
 function startPlay(id) {
-  soundObject = getSoundObject(id);
+
+  for(i = 0; i <= sounds.length - 1; i++) {
+    if(sounds[i].sound_id == id) {
+      soundObject = sounds[i];
+      // soundObject = createPlayer(sounds[i].sound_id, sounds[i].filename);
+      // sounds[i] = soundObject;
+    }
+  }
+
   if(soundObject) {
-    
+
     if(currentlyPlaying) {
       currentlyPlaying.stop();
-      stopPlay(currentlyPlaying.sound_id);
+      stopPlay(currentlyPlaying);
       currentlyPlaying = null;
     }
-
-    soundObject.loadSound(soundObject.filename, true);
-    soundObject.slider = createSlider(id);
-    startSlider(soundObject);
     
-    eval("$('player_object_" + id + "').hide();");
-    eval("$('player_object_stop_" + id + "').show();");
     currentlyPlaying = soundObject;
     
-
+    soundObject.loadSound(soundObject.filename, true);
+    // soundObject.start(0, 1);
+  
+    if(!soundObject.slider) {
+      soundObject.slider = createSlider(soundObject.sound_id);
+      soundObject.slider.soundObject = soundObject;
+    }
+    
+    soundObject.setPosition("0");
+    soundObject.slider.setValue(0,0);
+    startSlider(soundObject);
+    
+    eval("$('player_object_" + soundObject.sound_id + "').hide();");
+    eval("$('player_object_stop_" + soundObject.sound_id + "').show();");
   }
   
 }
@@ -87,11 +92,11 @@ function createSlider(id) {
  var player_slider_id = 'player_slider_' + id;
   
  var slider = new Control.Slider(player_handler_id, player_slider_id, { sliderValue:0, onSlide:function(v){
-   // $('debug1').innerHTML='slide: '+ v;
+   // currentlyPlaying.setPosition(v);
+   $('debug1').innerHTML='slide: '+ v;
    }, 
  onChange:function(v){
-   
-
+    // currentlyPlaying.setPosition(v);
  }
  });
 

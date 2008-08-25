@@ -7,3 +7,5 @@ tmp/**
 *.DS_Store
 public/player/**
 public/tracks/**
+public/photos/**
+public/clippings**

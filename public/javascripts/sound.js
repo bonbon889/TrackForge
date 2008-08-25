@@ -20,7 +20,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         if(!this.options.swfLocation) {
             this.options.swfLocation = "/player/SoundBridge.swf";
         }
-    
+        
         if(Sound.id_count == undefined) {
             Sound.id_count = 1;
         } else {
@@ -40,7 +40,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         
         movie_element = "";
         movie_element += '<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="0" height="0"'; 
-        movie_element += ' id="' + movie_id+ '"'; 
+        movie_element += ' id="' + movie_id + '"'; 
         movie_element += ' align="middle">';
         movie_element += '<param name="movie" value="'+movie_swf+'" />';
         movie_element += '<param name="quality" value="high" />';
@@ -187,5 +187,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         // alert (object_id);
         // alert (Sound.__thisMovie(object_id));
         // alert (Sound.__thisMovie(object_id).proxyMethods);
+        // alert(functionname);
+        
         return Sound.__thisMovie(object_id).proxyMethods(functionname, justArgs);
     } 
