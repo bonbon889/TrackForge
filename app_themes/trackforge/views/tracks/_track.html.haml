@@ -2,7 +2,6 @@
   - user = track.user
   = link_to(image_tag(user.avatar_photo_url(:thumb), "height"=>"50", "alt"=>"#{user.login}", "width"=>"50" , :class => 'avatar'), user_path(user), :title => "#{user.login}'s profile")
 
-  = render :partial => 'tracks/jsplayer', :locals => {:track => track}
   
   %h2= link_to h(track.name), user_track_path(user,track)
   %h3= "Uploaded by: " + link_to(user.login, user_path(user))
@@ -22,4 +21,7 @@
       = link_to "Download This Track", download_path(:id => track.id, :filename => track.filename)
       = '/'
       = link_to "Add to your Favorites", '#'
-
+  %br
+  %p{:id => "track_#{track.id}"}
+  :javascript
+    AudioPlayer.embed("track_#{track.id}", {soundFile: "#{track.public_filename}"});
