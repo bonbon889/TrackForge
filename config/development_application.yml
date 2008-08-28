@@ -32,7 +32,7 @@ audio:
     #size in megabytes
     max_size: 10
     #options - 's3', 'file_system', 'db_system' - see attachment_fu for details
-    storage: 'file_system'
+    storage: 's3'
     content_type: ['audio/mpeg', 'audio/mpg', 'audio/x-ms-wma', 'application/ogg', 'audio/x-wav', 'audio/mid']
 
 feature:

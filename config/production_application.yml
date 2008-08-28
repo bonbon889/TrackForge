@@ -21,7 +21,7 @@ photo:
     max_size: 3
     thumbnails: {thumb: "58x58!", medium: "220x320!", large: "664>"}
     #options - 's3', 'file_system', 'db_system' - see attachment_fu for details
-    storage: 'file_system'
+    storage: 's3'
     processor: 'MiniMagick'
     content_type: ['image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 'image/x-png']
 
@@ -43,7 +43,7 @@ feature:
     min_size: 1    
     max_size: 1
     #thumbnails:     
-    storage: 'file_system'
+    storage: 's3'
     processor: 'MiniMagick'
     content_type: ['image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 'image/x-png']
         
@@ -53,7 +53,7 @@ clipping:
     min_size: 1    
     max_size: 3
     thumbnails: {thumb: "100x100!", medium_square: "200x200!", medium: "200>"}
-    storage: 'file_system'
+    storage: 's3'
     processor: 'MiniMagick'
     content_type: ['image/jpg', 'image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 'image/x-png']
 
