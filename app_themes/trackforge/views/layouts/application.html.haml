@@ -15,9 +15,7 @@
     
   %body
     #top_header
-      %script{:type => "text/javascript"}= "addthis_pub = 'j4s0n';"
-      = link_to content_tag(:div,'',:class => 'share_this'), "http://www.addthis.com/bookmark.php", :onmouseover => "return addthis_open(this, '', '[URL]', '[TITLE]')", :onmouseout => "addthis_close()", :onclick => "addthis_sendto()"
-      %script{:type => "text/javascript", :src => "http://s7.addthis.com/js/152/addthis_widget.js"}
+      = link_to content_tag(:div,'',:class => 'share_this'), "http://www.addthis.com/bookmark.php?v=15&winname=addthis&pub=j4s0n&s=more&url=http%3A%2F%2Fwww.trackforge.com%2F&title=TrackForge%20|%20Where%20musicians%2C%20fans%20and%20artists%20hangout!", :target => "_blank"
       
     #doc2{:class => "yui-t#{@sidebar_left ? 3 : 6}"}
       = render :partial => "shared/header"

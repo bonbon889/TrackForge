@@ -39,6 +39,9 @@
 
     .padded
       = image_tag('cc.logo.png', :plugin => 'trackforge')
+      %br
+      %br
+      = link_to image_tag('heroku.gif'), "http://heroku.com"
   /   %h3= "Explore #{AppConfig.community_name}"
   /   %ul.list.checks
   /     - Category.find(:all).each do |c|

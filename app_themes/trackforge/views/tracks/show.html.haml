@@ -20,7 +20,9 @@
             - @track.tags.each do |t|
               %li=link_to( t.name, tag_url(t.name), :rel => 'tag')
       %br
-      = render :partial => 'tracks/jsplayer', :locals => {:track => @track}
+      %p{:id => "track_#{@track.id}"}
+      :javascript
+        AudioPlayer.embed("track_#{@track.id}", {soundFile: "#{@track.public_filename}"});
       %br
       %p.actions
         = link_to "Download This Track", download_path(:id => @track.id, :filename => @track.filename)
