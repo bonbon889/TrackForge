@@ -6,8 +6,10 @@ class BaseController < ApplicationController
   include AuthenticatedSystem
   before_filter :login_from_cookie  
   skip_before_filter :verify_authenticity_token, :only => :footer_content
-    
-  caches_action :site_index, :footer_content, :if => Proc.new{|c| c.cache_action? }
+  
+  caches_action :footer_content, :if => Proc.new{|c| c.cache_action? }
+  
+  #caches_action :site_index, :footer_content, :if => Proc.new{|c| c.cache_action? }
   def cache_action?
     !logged_in? && controller_name.eql?('base') && params[:format].blank? 
   end  
