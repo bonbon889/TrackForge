@@ -12,9 +12,9 @@
 ActiveRecord::Schema.define(:version => 20080721151031) do
 
   create_table "activities", :force => true do |t|
-    t.integer  "user_id",    :limit => 10
+    t.integer  "user_id"
     t.string   "action",     :limit => 50
-    t.integer  "item_id",    :limit => 10
+    t.integer  "item_id"
     t.string   "item_type"
     t.datetime "created_at"
   end
@@ -71,20 +71,20 @@ ActiveRecord::Schema.define(:version => 20080721151031) do
   end
 
   create_table "comments", :force => true do |t|
-    t.string   "title"            
-    t.text     "comment"          
+    t.string   "title"
+    t.text     "comment"
     t.datetime "created_at"
     t.integer  "commentable_id"
     t.string   "commentable_type"
-    t.integer  "user_id"  
+    t.integer  "user_id"
     t.integer  "recipient_id"
   end
 
+  add_index "comments", ["user_id"], :name => "fk_comments_user"
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["created_at"], :name => "index_comments_on_created_at"
   add_index "comments", ["recipient_id"], :name => "index_comments_on_recipient_id"
-  add_index "comments", ["user_id"], :name => "fk_comments_user"
 
   create_table "contests", :force => true do |t|
     t.string   "title"
@@ -152,15 +152,15 @@ ActiveRecord::Schema.define(:version => 20080721151031) do
   add_index "friendships", ["user_id"], :name => "index_friendships_on_user_id"
 
   create_table "genres", :force => true do |t|
-    t.integer  "code",                                                           :limit => 255
+    t.integer  "code"
     t.string   "name"
-    t.boolean  "main",                                                                          :default => true
-    t.integer  "position",                                                                      :default => 0
-    t.integer  "tracks_count",                                                                  :default => 0
+    t.boolean  "main",                                                            :default => true
+    t.integer  "position",                                                        :default => 0
+    t.integer  "tracks_count",                                                    :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "parent_id"
-    t.integer  "#<ActiveRecord::ConnectionAdapters::TableDefinition:0x380fc34>"
+    t.integer  "#<ActiveRecord::ConnectionAdapters::TableDefinition:0xb6caf3e4>"
   end
 
   create_table "homepage_features", :force => true do |t|
@@ -277,8 +277,8 @@ ActiveRecord::Schema.define(:version => 20080721151031) do
     t.text     "body_html"
   end
 
-  add_index "sb_posts", ["user_id", "created_at"], :name => "index_posts_on_user_id"
-  add_index "sb_posts", ["forum_id", "created_at"], :name => "index_posts_on_forum_id"
+  add_index "sb_posts", ["created_at", "forum_id"], :name => "index_posts_on_forum_id"
+  add_index "sb_posts", ["created_at", "user_id"], :name => "index_posts_on_user_id"
 
   create_table "sessions", :force => true do |t|
     t.string   "sessid"
@@ -303,9 +303,9 @@ ActiveRecord::Schema.define(:version => 20080721151031) do
     t.string  "taggable_type"
   end
 
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
   add_index "taggings", ["taggable_id"], :name => "index_taggings_on_taggable_id"
   add_index "taggings", ["taggable_type"], :name => "index_taggings_on_taggable_type"
-  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
 
   create_table "tags", :force => true do |t|
     t.string "name"
@@ -326,9 +326,9 @@ ActiveRecord::Schema.define(:version => 20080721151031) do
     t.integer  "last_post_id"
   end
 
-  add_index "topics", ["forum_id", "replied_at"], :name => "index_topics_on_forum_id_and_replied_at"
-  add_index "topics", ["forum_id", "sticky", "replied_at"], :name => "index_topics_on_sticky_and_replied_at"
   add_index "topics", ["forum_id"], :name => "index_topics_on_forum_id"
+  add_index "topics", ["forum_id", "replied_at"], :name => "index_topics_on_forum_id_and_replied_at"
+  add_index "topics", ["forum_id", "replied_at", "sticky"], :name => "index_topics_on_sticky_and_replied_at"
 
   create_table "tracks", :force => true do |t|
     t.string   "name"
@@ -392,11 +392,11 @@ ActiveRecord::Schema.define(:version => 20080721151031) do
     t.integer  "role_id"
   end
 
+  add_index "users", ["activated_at"], :name => "index_users_on_activated_at"
+  add_index "users", ["avatar_id"], :name => "index_users_on_avatar_id"
+  add_index "users", ["featured_writer"], :name => "index_users_on_featured_writer"
   add_index "users", ["login_slug"], :name => "index_users_on_login_slug"
   add_index "users", ["vendor"], :name => "index_users_on_vendor"
-  add_index "users", ["activated_at"], :name => "index_users_on_activated_at"
-  add_index "users", ["featured_writer"], :name => "index_users_on_featured_writer"
-  add_index "users", ["avatar_id"], :name => "index_users_on_avatar_id"
 
   create_table "votes", :force => true do |t|
     t.string   "user_id"
